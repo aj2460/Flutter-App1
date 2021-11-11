@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    const questions = [
       {
         "questionText": "What's your favorite color?",
         "answers": ["Black", "Blue", "Red", "Pink"]
@@ -53,18 +53,22 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text("My First App"),
         ),
-        body: Column(
-          children: <Widget>[
-            Question(
-              questions[_questionIndex]["questionText"].toString(),
-            ),
-            ...(questions[_questionIndex]["answers"] as List<String>).map(
-              (ans) {
-                return Answer(_answerClickd, ans);
-              },
-            )
-          ],
-        ),
+        body: _questionIndex < questions.length
+            ? Column(
+                children: <Widget>[
+                  Question(
+                    questions[_questionIndex]["questionText"].toString(),
+                  ),
+                  ...(questions[_questionIndex]["answers"] as List<String>).map(
+                    (ans) {
+                      return Answer(_answerClickd, ans);
+                    },
+                  )
+                ],
+              )
+            : Center(
+                child: Text("You have done it"),
+              ),
       ),
     );
   }
