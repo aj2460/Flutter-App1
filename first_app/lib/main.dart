@@ -20,6 +20,13 @@ class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
   var _totalScore = 0;
 
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
   void _answerClickd(int score) {
     _totalScore += score;
     print(_totalScore);
@@ -45,7 +52,7 @@ class _MyAppState extends State<MyApp> {
       {
         "questionText": "What's your favorite animal?",
         "answers": [
-          {"text": "Lion", "score": 10},
+          {"text": "Lion", "score": 8},
           {"text": "Deer", "score": 6},
           {"text": "Rabbit", "score": 4},
           {"text": "Dog", "score": 1}
@@ -71,7 +78,7 @@ class _MyAppState extends State<MyApp> {
                 answerBtnClickedHandler: _answerClickd,
                 questions: _questions,
                 questionIdx: _questionIndex)
-            : Result(),
+            : Result(_totalScore, _resetQuiz),
       ),
     );
   }
