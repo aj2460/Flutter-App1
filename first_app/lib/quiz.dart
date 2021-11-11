@@ -6,9 +6,12 @@ import "./answer.dart";
 class Quiz extends StatelessWidget {
   final VoidCallback answerBtnClickedHandler;
   final List<Map<String, Object>> questions;
-  var questionIdx;
+  final int questionIdx;
 
-  Quiz(this.answerBtnClickedHandler, this.questions, this.questionIdx);
+  Quiz(
+      {required this.answerBtnClickedHandler,
+      required this.questions,
+      required this.questionIdx});
 
   @override
   Widget build(BuildContext context) {

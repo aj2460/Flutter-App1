@@ -55,7 +55,10 @@ class _MyAppState extends State<MyApp> {
           title: const Text("My First App"),
         ),
         body: _questionIndex < _questions.length
-            ? Quiz(_answerClickd, _questions, _questionIndex)
+            ? Quiz(
+                answerBtnClickedHandler: _answerClickd,
+                questions: _questions,
+                questionIdx: _questionIndex)
             : Result(),
       ),
     );
