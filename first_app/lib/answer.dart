@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
   final VoidCallback btnClickedHandler;
-  Answer(this.btnClickedHandler);
+  final String answerText;
+  Answer(this.btnClickedHandler, this.answerText);
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +12,8 @@ class Answer extends StatelessWidget {
       margin: EdgeInsets.all(16),
       child: ElevatedButton(
         onPressed: btnClickedHandler,
-        child: const Text(
-          "Answer 1",
+        child: Text(
+          answerText,
           style: TextStyle(fontSize: 24),
         ),
       ),
