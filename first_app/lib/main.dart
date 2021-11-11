@@ -1,4 +1,3 @@
-import 'package:first_app/answer.dart';
 import 'package:flutter/material.dart';
 
 import './quiz.dart';
@@ -19,8 +18,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void _answerClickd() {
+  void _answerClickd(int score) {
+    _totalScore += score;
+    print(_totalScore);
     setState(() {
       _questionIndex++;
     });
@@ -33,19 +35,29 @@ class _MyAppState extends State<MyApp> {
     const _questions = [
       {
         "questionText": "What's your favorite color?",
-        "answers": ["Black", "Blue", "Red", "Pink"]
+        "answers": [
+          {"text": "Black", "score": 10},
+          {"text": "Blue", "score": 6},
+          {"text": "Red", "score": 8},
+          {"text": "Pink", "score": 4}
+        ]
       },
       {
         "questionText": "What's your favorite animal?",
-        "answers": ["Lion", "Deer", "Rabbit", "Dog"]
+        "answers": [
+          {"text": "Lion", "score": 10},
+          {"text": "Deer", "score": 6},
+          {"text": "Rabbit", "score": 4},
+          {"text": "Dog", "score": 1}
+        ]
       },
       {
         "questionText": "What's your favorite actor?",
         "answers": [
-          "Tom Hanks",
-          "Will Smith",
-          "Morgan Freeman",
-          "George Clooney"
+          {"text": "Tom Hanks", "score": 1},
+          {"text": "Will Smith", "score": 2},
+          {"text": "Morgan Freeman", "score": 1},
+          {"text": "George Clooney", "score": 2}
         ]
       },
     ];
